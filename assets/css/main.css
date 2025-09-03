@@ -427,7 +427,7 @@ h6 {
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
   font-size: 16px;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
-  margin-right: 10px;
+  margin-right: 0;
   transition: 0.3s;
 }
 
@@ -740,6 +740,73 @@ section,
   }
 }
 
+
+/* Mejoras para el botón del Hero Section */
+.btn-get-started {
+  display: inline-block;
+  padding: 14px 40px;
+  background: linear-gradient(145deg, #CFA358, #b38947);
+  color: #FFF8E7 !important;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(207, 163, 88, 0.3),
+              0 4px 10px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.btn-get-started::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.btn-get-started:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(207, 163, 88, 0.4),
+              0 6px 15px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: #FFF8E7 !important;
+}
+
+.btn-get-started:hover::before {
+  left: 100%;
+}
+
+.btn-get-started:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 10px rgba(207, 163, 88, 0.3),
+              0 2px 5px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Ajuste para la sección Hero con el nuevo botón */
+.hero .container {
+  position: relative;
+  z-index: 2;
+  padding: 0 15px;
+  text-align: center;
+  transform: translateY(-80px) !important;
+}
+/*  */
+
+
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
@@ -772,6 +839,56 @@ section,
 .about .content p:last-child {
   margin-bottom: 0;
 }
+
+/*CUADRÍCULA 2x2*/
+.about-photo-grid {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 50px 0 100px;  /*1:TOP.2:RIGHT.3:BOTTOM.4:LEFT*/
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* 2 columnas iguales */
+  grid-template-rows: 1fr 1fr;     /* 2 filas iguales */
+  gap: 10px;              /* separación entre fotos */
+  aspect-ratio: 1;        /* mantiene proporción cuadrada */
+}
+
+.about-photo-grid .photo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.about-photo-grid .photo-item:hover {
+  transform: scale(1.05);  /* efecto hover sutil */
+}
+
+.about-photo-grid .photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* mantiene proporción y llena el contenedor */
+  transition: transform 0.3s ease;
+}
+
+.about-photo-grid .photo-item:hover img {
+  transform: scale(1.1);   /* zoom ligero en hover */
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+  .about-photo-grid {
+    max-width: 300px;      /* más pequeño en móvil */
+    gap: 8px;              /* menor separación */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-photo-grid {
+    max-width: 280px;      /* aún más pequeño */
+    gap: 5px;              /* separación mínima */
+  }
+}
+/* --FIN cuadrícula-- */
 
 /*--------------------------------------------------------------
 # Clients Section
@@ -1401,6 +1518,14 @@ section,
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
+
+#contact .section-title h2 {
+  font-size: 2.8rem;     /* Mismo tamaño grande */
+  margin: 0;             /* Elimina el margen */
+  font-weight: 300;      /* Mismo grosor light */
+  color: #595959;        /* Mismo color */
+}
+
 .contact .info-item + .info-item {
   margin-top: 40px;
 }
@@ -1601,85 +1726,218 @@ section,
   color: var(--accent-color);
 }
 
-/* SLIDER -> */
-.about-swiper {
-  width: 300px;       /* ancho típico de un video vertical de celular */
-  height: 533px;      /* alto proporcional 9:16 */
-  margin: 0 auto;     /* centrar el slider */
-  position: relative; /* importante para posicionar las flechas */
+/*  */
+/* Ajuste del título Productos en Portfolio */
+#portfolio .section-title {
+  padding-top: 20px !important;     /* baja el título un poco */
+  padding-bottom: 55px !important;  /* reduce separación con la galería */
+  text-align: center;
 }
 
-.about-swiper .swiper-slide {
+#portfolio .section-title h2 {
+  font-size: 2.8rem;     /* hace el título más grande */
+  margin: 0;             /* elimina cualquier margen extra */
+}
+/*  */
+
+/*  */
+
+
+/* CORRECCIÓN FOOTER - ESTRUCTURA UNIFICADA */
+
+/* Contenedor unificado para cada sección del footer */
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 20px 15px;
+  text-align: center;
+}
+
+/* Iconos con tamaño y margen consistentes */
+.footer-icon {
+  color: var(--accent-color);
+  font-size: 28px;
+  margin-bottom: 18px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* Contenedor de contenido para alineación consistente */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Títulos con estilo consistente */
+.footer-content h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--contrast-color);
+  width: 100%;
+  text-align: center;
+}
+
+/* Párrafos con alineación consistente */
+.footer-content p {
+  margin-bottom: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Enlaces sociales con alineación centrada */
+.social-links {
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.social-links a {
+  display: inline-flex;
   align-items: center;
-}
-
-.about-swiper video {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  object-fit: cover;  /* mantiene proporción y llena el contenedor */
-}
-
-/* FLECHAS -> */
-.about-swiper .swiper-button-next,
-.about-swiper .swiper-button-prev {
-  color: #333;              /* color de las flechas */
-  width: 40px;
-  height: 40px;
-  left: 50%;                /* centrar horizontalmente */
-  transform: translateX(-50%);
-}
-
-.about-swiper .swiper-button-next {
-  top: auto;
-  bottom: 10px;             /* flecha abajo */
-  transform: translateX(-50%) rotate(90deg);
-}
-
-.about-swiper .swiper-button-prev {
-  top: 30px;                /* flecha arriba */
-  bottom: auto;
-  transform: translateX(-50%) rotate(90deg);
-}
-
-/* boton unmute */
-.video-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.video-container video {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-.unmute-btn {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  font-size: 20px;
-  padding: 8px;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
 }
 
-/*  */
-.gradient-bg {
-  background: #F2F2F2 !important;
+.social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
 }
-/*  */
-.gradient-bg-portfolio {
-  background:#F2F2F2!important;
+
+/* Asegurar que todas las columnas tengan la misma altura y alineación */
+@media (min-width: 768px) {
+  .footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* Hace que todas las columnas tengan la misma altura */
+  }
+  
+  .footer .col-md-6, 
+  .footer .col-lg-4 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-section {
+    flex: 1; /* Hace que todas las secciones ocupen toda la altura disponible */
+  }
 }
-/*  */
+
+
+
+/* Contenedor de enlaces sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5px;
+  gap: 15px; /* Espacio entre botones */
+}
+
+/* Estilo base para todos los botones sociales */
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Estilo específico para Instagram */
+.social-links a.instagram:hover {
+  color: #E1306C;
+  border-color: #E1306C;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(225, 48, 108, 0.3);
+}
+
+/* Estilo específico para WhatsApp */
+.social-links a.whatsapp:hover {
+  color: #25D366;
+  border-color: #25D366;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+}
+
+/* Efecto activo para ambos botones */
+.social-links a:active {
+  transform: translateY(1px);
+}
+
+
+/* PORTFOLIO-DETAILS IMG */
+#product-images img {
+  width: 100%;       /* Que ocupe el ancho del contenedor */
+  max-height: 500px; /* Ajusta este valor según lo grande que quieras que se vea */
+  object-fit: contain; /* Mantiene la proporción sin recortar */
+  display: block;
+  margin: 0 auto;    /* Centra la imagen */
+}
+
+/* Flechas personalizadas para el portfolio details */
+.portfolio-details .swiper-button-next,
+.portfolio-details .swiper-button-prev {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.3);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: -25px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.portfolio-details .swiper-button-next:hover,
+.portfolio-details .swiper-button-prev:hover {
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.portfolio-details .swiper-button-next:after,
+.portfolio-details .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .portfolio-details .swiper-button-next,
+  .portfolio-details .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+  }
+  
+  .portfolio-details .swiper-button-next:after,
+  .portfolio-details .swiper-button-prev:after {
+    font-size: 16px;
+  }
+}
+
+
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/

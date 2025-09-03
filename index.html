@@ -105,23 +105,17 @@
             <div class="swiper about-swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <div class="video-container" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: transform 0.3s;">
-                    <video src="assets/vid/PasoAPasoDeUnAnillo.mp4" autoplay muted playsinline style="width:100%; height:auto; display:block;"></video>
+                  <div class="video-container" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: transform 0.3s; position: relative;">
+                    
+                    <!-- Video -->
+                    <video id="aboutVideo" src="assets/vid/PasoAPasoDeUnAnillo.mp4" autoplay muted playsinline style="width:100%; height:auto; display:block; cursor:pointer;"></video>
+
+                    <!-- Barra de progreso -->
+                    <input id="videoProgress" type="range" min="0" max="100" value="0" style="position:absolute; bottom:20px; left:10px; right:10px; width:calc(100% - 20px);">
+
                     <button class="unmute-btn"><i class="bi bi-volume-up"></i></button>
                   </div>
                 </div>
-                <div class="swiper-slide">
-                  <div class="video-container" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: transform 0.3s;">
-                    <video src="assets/vid/ProcesoArito.mp4" autoplay muted playsinline style="width:100%; height:auto; display:block;"></video>
-                    <button class="unmute-btn"><i class="bi bi-volume-up"></i></button>
-                  </div>
-                </div>
-                <!-- <div class="swiper-slide">
-                  <div class="video-container" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: transform 0.3s;">
-                    <video src="assets/vid/Aprendiendo_siempre.mp4" autoplay muted playsinline style="width:100%; height:auto; display:block;"></video>
-                    <button class="unmute-btn"><i class="bi bi-volume-up"></i></button>
-                  </div>
-                </div> -->
               </div>
               <!-- Paginación -->
               <div class="swiper-pagination"></div>
@@ -130,6 +124,9 @@
               <div class="swiper-button-prev"></div>
             </div>
           </div>
+
+
+
 
         </div>
 

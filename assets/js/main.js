@@ -270,5 +270,30 @@ document.querySelectorAll('.video-container').forEach(container => {
   });
 });
 
+const video = document.getElementById('aboutVideo');
+const progressBar = document.getElementById('videoProgress');
+
+// Play/Pause al clickear en el video
+video.addEventListener('click', () => {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+});
+
+// Actualizar barra de progreso
+video.addEventListener('timeupdate', () => {
+  const progress = (video.currentTime / video.duration) * 100 || 0;
+  progressBar.value = progress;
+});
+
+// Cambiar tiempo con la barra
+progressBar.addEventListener('input', () => {
+  const time = (progressBar.value / 100) * video.duration;
+  video.currentTime = time;
+});
+
+
 
 })();

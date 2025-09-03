@@ -395,6 +395,11 @@ h6 {
   position: relative;
 }
 
+#footer {
+  padding-bottom: 20px;
+}
+
+
 .footer .icon {
   color: var(--accent-color);
   margin-right: 15px;
@@ -1667,7 +1672,13 @@ section,
 }
 
 /*  */
-
+.gradient-bg {
+  background: #F2F2F2 !important;
+}
+/*  */
+.gradient-bg-portfolio {
+  background:#F2F2F2!important;
+}
 /*  */
 /*--------------------------------------------------------------
 # Starter Section Section
